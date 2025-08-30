@@ -9,3 +9,4 @@ Usage:
 Notes:
 - Do not modify other Steam files.
 - Use at your own risk.
+- Special thanks to alibuzcuk — without their help, this wouldn’t have been possible!
