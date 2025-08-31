@@ -1,4 +1,4 @@
-Steam File Manager
+CNR-ST
 
 Usage:
 1. Run the setup first to install the necessary files.
