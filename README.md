@@ -7,6 +7,7 @@ Usage:
 4. .lua files will be copied to Steam/config/stplug-in
 
 Notes:
+- You can download the lua and manifest of the game you want from Steam Manifest & Lua Generator.html
 - Do not modify other Steam files.
 - Use at your own risk.
 - Special thanks to alibuzcuk — without their help, this wouldn’t have been possible!
