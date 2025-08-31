@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>CNR-ST - Free Steam Manifest & Lua Generator | AppID to Manifest Tool</title>
+
+    <style>
+        body {
+            margin: 0;
+            background: #0e011a;
+            font-family: 'Segoe UI', sans-serif;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            padding: 20px;
+            text-align: center;
+            overflow-x: hidden;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            color: #b674ff;
+            text-shadow: 0 0 15px #a855f7, 0 0 25px #9333ea;
+            margin-bottom: 12px;
+            position: relative;
+            animation: holo-glow 4s infinite linear;
+        }
+
+        @keyframes holo-glow {
+            0% {
+                text-shadow: 0 0 10px #a855f7, 0 0 25px #9333ea;
+            }
+
+            50% {
+                text-shadow: 0 0 20px #b674ff, 0 0 40px #d946ef;
+            }
+
+            100% {
+                text-shadow: 0 0 10px #a855f7, 0 0 25px #9333ea;
+            }
+        }
+
+        p {
+            color: #aaa;
+            margin-bottom: 30px;
+            max-width: 500px;
+            font-size: 1rem;
+        }
+
+        input {
+            width: 300px;
+            padding: 14px;
+            font-size: 16px;
+            border-radius: 12px;
+            background: #250038;
+            color: white;
+            border: none;
+            outline: none;
+            box-shadow: 0 0 10px #9333ea;
+            margin-bottom: 16px;
+            text-align: center; /* İşte placeholder ve yazı ortası */
+        }
+
+        button {
+            background: #6d28d9;
+            border: none;
+            color: white;
+            padding: 12px 24px;
+            font-size: 16px;
+            border-radius: 12px;
+            cursor: pointer;
+            box-shadow: 0 0 10px #a855f7;
+            transition: all 0.2s ease-in-out;
+            position: relative;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+
+            button:hover {
+                background: #9333ea;
+                transform: scale(1.05);
+            }
+
+            button::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(120deg, rgba(255,255,255,0.2), rgba(255,255,255,0));
+                transition: left 0.3s;
+                pointer-events: none;
+            }
+
+            button:hover::before {
+                left: 100%;
+            }
+
+        #message {
+            margin-top: 20px;
+            color: #ccc;
+            font-size: 14px;
+        }
+
+        .tab-content {
+            max-width: 600px;
+            width: 100%;
+            background: #250038;
+            border-radius: 12px;
+            box-shadow: 0 0 15px #9333ea;
+            padding: 30px 40px;
+            text-align: center;
+            color: #ccc;
+            min-height: 320px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+
+    <script>
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I')) e.preventDefault();
+        });
+        document.addEventListener('contextmenu', function (e) { e.preventDefault(); });
+
+        function downloadZip() {
+            const appId = document.getElementById('gameId').value.trim();
+            if (!appId || !/^\d+$/.test(appId)) {
+                alert('Please enter a valid numeric App ID.');
+                return;
+            }
+            const downloadUrl = `https://walftech.com/proxy.php?url=https%3A%2F%2Fsteamgames554.s3.us-east-1.amazonaws.com%2F${appId}.zip`;
+            const iframe = document.createElement('iframe');
+            iframe.style.display = 'none';
+            iframe.src = downloadUrl;
+            document.body.appendChild(iframe);
+            setTimeout(() => { document.body.removeChild(iframe); }, 2000);
+        }
+    </script>
+
+</head>
+<body>
+
+    <h1>CNR-ST</h1>
+    <p>Manifest & Lua Generator for Steam.</p>
+
+    <div class="tab-content">
+        <input type="text" id="gameId" placeholder="Enter Steam AppID" />
+        <button onclick="downloadZip()">Download</button>
+        <div id="message"></div>
+    </div>
+
+</body>
+</html>
