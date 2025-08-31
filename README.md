@@ -2,7 +2,7 @@ CNR-ST
 
 Usage:
 1. Run the setup first to install the necessary files.
-2. Drag and drop your .manifest and .lua files into the window.
+2. Drag and drop your .manifest and .lua files into the Cnr.
 3. .manifest files will be copied to Steam/config/depotcache
 4. .lua files will be copied to Steam/config/stplug-in
 
